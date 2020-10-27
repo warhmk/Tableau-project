@@ -17,11 +17,11 @@
             "year": {
               "type": "single",
               "fields": ["Year"],
-              "init": {"Year": 2008},
+              "init": {"Year": 2006},
               "bind": {
                 "Year": {
                   "input": "range",
-                  "min": 2008,
+                  "min": 2006,
                   "max": 2016,
                   "step": 1,
                   "name": "year slider:"
