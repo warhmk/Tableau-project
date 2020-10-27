@@ -1,0 +1,194 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/warhmk/assignment2/master/data/2019.csv"
+  },
+  "vconcat": [
+    {
+      "title": "World happiness ranking 2019",
+      "width": 600,
+      "height": 400,
+      "layer": [
+        {
+          "selection": {
+            "grid": {"type": "multi", "bind": "legend"},
+            "country_select": {
+              "type": "single",
+              "fields": ["Country or region"],
+              "init": {"country": "Australia"},
+              "empty": "all"
+            }
+          },
+          "mark": "circle",
+          "encoding": {
+            "x": {
+              "field": "GDP per capita",
+              "type": "quantitative",
+              "scale": {"domain": [0, 1.8]}
+            },
+            "y": {
+              "field": "Score",
+              "type": "quantitative",
+              "title": "Ranking",
+              "scale": {"domain": [0, 8]}
+            },
+            "size": {
+              "field": "Perceptions of corruption",
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "Freedom to make life choices",
+              "type": "quantitative"
+            },
+            "tooltip": [
+              {"field": "Country or region"},
+              {"field": "Overall rank"},
+              {"field": "GDP per capita", "type": "quantitative"},
+              {"field": "Score"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "text", "dx": 10, "dy": 2, "align": "left"},
+          "encoding": {
+            "text": {"field": "Country or region", "type": "nominal"},
+            "x": {
+              "field": "GDP per capita",
+              "type": "quantitative",
+              "scale": {"domain": [0, 1.8]}
+            },
+            "y": {
+              "field": "Score",
+              "type": "quantitative",
+              "scale": {"domain": [0, 8]}
+            },
+            "opacity": {
+              "condition": {
+                "test": "datum['Country or region'] == 'Finland' || datum['Country or region'] == 'Singapore' || datum['Country or region'] == 'Australia' || datum['Country or region'] == 'Malaysia'|| datum['Country or region'] == 'Japan' || datum['Country or region'] == 'Rwanda' || datum['Country or region'] == 'Hong Kong' || datum['Country or region'] == 'South Sudan' || datum['Country or region'] == 'Botswana' || datum['Country or region'] == 'Costa Rica' || datum['Country or region'] == 'Norway' || datum['Country or region'] == 'Laos' || datum['Country or region'] == 'Tajikistan' || datum['Country or region'] == 'Somalia'",
+                "value": 1
+              },
+              "value": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 600,
+      "height": 300,
+      "transform": [
+        {"window": [{"op": "count", "as": "index"}]},
+        {
+          "fold": [
+            "Social support",
+            "GDP per capita",
+            "Score",
+            "Healthy life expectancy",
+            "Freedom to make life choices",
+            "Generosity",
+            "Perceptions of corruption"
+          ]
+        },
+        {
+          "window": [
+            {"op": "min", "field": "value", "as": "min"},
+            {"op": "max", "field": "value", "as": "max"}
+          ],
+          "frame": [null, null],
+          "groupby": ["key"]
+        },
+        {
+          "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
+          "as": "norm_val"
+        },
+        {"calculate": "(datum.min + datum.max) / 2", "as": "mid"}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "rule", "color": "#9b9b9b"},
+          "encoding": {"detail": {"aggregate": "count"}, "x": {"field": "key"}}
+        },
+        {
+          "mark": "line",
+          "encoding": {
+            "color": {"field": "Country or region", "type": "nominal"},
+            "detail": {"type": "nominal", "field": "index"},
+            "opacity": {"value": 0.4},
+            "x": {"type": "nominal", "field": "key"},
+            "y": {"type": "quantitative", "field": "norm_val", "axis": null},
+            "tooltip": [
+              {"field": "Score"},
+              {"field": "GDP per capita"},
+              {"field": "Social support"}
+            ]
+          }
+        },
+        {
+          "encoding": {
+            "x": {"type": "nominal", "field": "key"},
+            "y": {"value": 0}
+          },
+          "layer": [
+            {
+              "mark": {"type": "text", "style": "label"},
+              "encoding": {
+                "text": {
+                  "aggregate": "max",
+                  "field": "max",
+                  "type": "quantitative"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "tick",
+                "style": "tick",
+                "size": 8,
+                "color": "#ccc"
+              }
+            }
+          ]
+        },
+        {
+          "encoding": {
+            "x": {"type": "nominal", "field": "key"},
+            "y": {"value": 300}
+          },
+          "layer": [
+            {
+              "mark": {"type": "text", "style": "label"},
+              "encoding": {
+                "text": {
+                  "aggregate": "min",
+                  "field": "min",
+                  "type": "quantitative"
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "tick",
+                "style": "tick",
+                "size": 8,
+                "color": "#000000"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "axisX": {
+      "domain": false,
+      "labelAngle": 0,
+      "tickColor": "#ccc",
+      "title": null
+    },
+    "view": {"stroke": null},
+    "style": {
+      "label": {"baseline": "middle", "align": "right", "dx": -5},
+      "tick": {"orient": "horizontal"}
+    }
+  }
+}

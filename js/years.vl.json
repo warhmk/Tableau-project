@@ -1,0 +1,292 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "Drag the sliders to highlight points.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/warhmk/assignment2/master/data/Original_2017_full4.csv"
+  },
+  "transform": [{"calculate": "year(datum.year)", "as": "Year"}],
+  "vconcat": [
+    {
+      "title": "Life expectancy and Social support (2006 - 2016)",
+      "width": 600,
+      "height": 400,
+      "layer": [
+        {
+          "name": "year",
+          "selection": {
+            "year": {
+              "type": "single",
+              "fields": ["Year"],
+              "init": {"Year": 2008},
+              "bind": {
+                "Year": {
+                  "input": "range",
+                  "min": 2008,
+                  "max": 2016,
+                  "step": 1,
+                  "name": "year slider:"
+                }
+              }
+            },
+            "country": {
+              "type": "single",
+              "fields": ["country"],
+              "init": {"country": false},
+              "empty": "none"
+            },
+            "country_highlight": {
+              "type": "single",
+              "fields": ["country"],
+              "empty": "all"
+            }
+          },
+          "mark": "circle",
+          "encoding": {
+            "x": {
+              "field": "Social support",
+              "type": "quantitative",
+              "scale": {"domain": [0, 1]}
+            },
+            "y": {
+              "field": "Healthy life expectancy at birth",
+              "type": "quantitative",
+              "title": "Life expectancy",
+              "scale": {"domain": [0, 80]}
+            },
+            "color": {
+              "condition": {
+                "selection": "year",
+                "field": "Democratic Quality",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [-2, -1, 0, 1, 2],
+                  "range": [
+                    "#FFD300",
+                    "#D9CA0C",
+                    "#B3C219",
+                    "#70941E",
+                    "#528D27"
+                  ]
+                }
+              },
+              "value": "0"
+            },
+            "opacity": {
+              "condition": {"selection": "country_highlight", "value": 1},
+              "value": 0.2
+            },
+            "size": {"value": 100},
+            "tooltip": [
+              {"field": "country"},
+              {"field": "Democratic Quality", "format": ".2f"},
+              {
+                "field": "Life Ladder",
+                "type": "quantitative",
+                "format": ".2f",
+                "title": "score"
+              },
+              {"field": "Log GDP per capita", "format": ".2f"},
+              {"field": "Perceptions of corruption", "format": ".2f"},
+              {
+                "field": "Healthy life expectancy at birth",
+                "title": "Life expectancy",
+                "format": ".2f"
+              },
+              {"field": "Social support", "format": ".2f"}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -12,
+            "fontSize": 11.5,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "x": {
+              "field": "Social support",
+              "type": "quantitative",
+              "scale": {"domain": [0, 1]}
+            },
+            "y": {
+              "field": "Healthy life expectancy at birth",
+              "type": "quantitative",
+              "title": "Life expectancy",
+              "scale": {"domain": [0, 80]}
+            },
+            "text": {"condition": {"selection": "year", "field": "country"}},
+            "color": {
+              "condition": {
+                "test": "datum['country'] == 'Malaysia' || datum['country'] =='Singapore' || datum['country'] == 'Australia' || datum['country'] == 'New Zealand' || datum['country'] == 'Italy' || datum['country'] == 'India' ||datum['country'] == 'Venezuela' ||datum['country'] == 'Japan' ||datum['country'] == 'South Korea' ||datum['country'] == ''",
+                "value": "black"
+              },
+              "value": ""
+            },
+            "opacity": {
+              "condition": {"selection": "country_highlight", "value": 1},
+              "value": 0.2
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": -12,
+            "fontSize": 11.5,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "x": {
+              "field": "Social support",
+              "type": "quantitative",
+              "scale": {"domain": [0, 1]}
+            },
+            "y": {
+              "field": "Healthy life expectancy at birth",
+              "type": "quantitative",
+              "title": "Life expectancy",
+              "scale": {"domain": [0, 80]}
+            },
+            "text": {"condition": {"selection": "year", "field": "country"}},
+            "color": {
+              "condition": {"selection": "country", "value": "black"},
+              "value": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "width": 300,
+          "height": 165,
+          "transform": [
+            {"filter": {"selection": "country"}},
+            {"filter": "datum['Life Ladder'] != null"},
+            {
+              "joinaggregate": [
+                {"op": "mean", "field": "Life Ladder", "as": "AverageScore"}
+              ]
+            }
+          ],
+          "layer": [
+            {
+              "mark": "bar",
+              "encoding": {
+                "x": {
+                  "field": "year",
+                  "type": "temporal",
+                  "timeUnit": "year",
+                  "title": "Year"
+                },
+                "y": {
+                  "field": "Life Ladder",
+                  "type": "quantitative",
+                  "title": "Score (high is good)",
+                  "scale": {"domain": [0, 8]}
+                },
+                "tooltip": [
+                  {"field": "year", "title": "year", "timeUnit": "year"},
+                  {"field": "Life Ladder", "format": ".2f", "title": "score"}
+                ],
+                "color": {"field": "Democratic Quality", "type": "quantitative"}
+              }
+            },
+            {
+              "mark": "line",
+              "encoding": {
+                "x": {"field": "year", "type": "temporal", "timeUnit": "year"},
+                "y": {
+                  "field": "Life Ladder",
+                  "type": "quantitative",
+                  "title": "Score (high is good)"
+                },
+                "tooltip": [
+                  {"field": "year", "title": "year", "timeUnit": "year"},
+                  {"field": "Life Ladder", "format": ".2f", "title": "score"}
+                ]
+              }
+            },
+            {
+              "mark": {"type": "rule", "color": "red", "strokeWidth": 2},
+              "encoding": {
+                "y": {
+                  "aggregate": "average",
+                  "field": "AverageScore",
+                  "type": "quantitative"
+                },
+                "tooltip": [{"field": "AverageScore", "format": ".2f"}]
+              }
+            },
+            {
+              "mark": {"type": "text", "dy": -85},
+              "encoding": {"text": {"field": "country", "type": "nominal"}}
+            }
+          ]
+        },
+        {
+          "vconcat": [
+            {
+              "width": 300,
+              "height": 30,
+              "mark": {"type": "tick", "thickness": 3, "height": 30},
+              "transform": [
+                {"filter": {"selection": "country"}},
+                {"filter": "datum['Freedom to make life choices'] != null"}
+              ],
+              "encoding": {
+                "x": {
+                  "field": "Freedom to make life choices",
+                  "type": "quantitative",
+                  "scale": {"domain": [0, 1]}
+                },
+                "color": {
+                  "field": "Democratic Quality",
+                  "type": "quantitative"
+                },
+                "tooltip": [
+                  {
+                    "field": "Freedom to make life choices",
+                    "title": "Freedom of life choices",
+                    "format": ".2f"
+                  },
+                  {"field": "year", "timeUnit": "year", "title": "year"}
+                ]
+              }
+            },
+            {
+              "width": 300,
+              "mark": {"type": "tick", "thickness": 3, "height": 30},
+              "transform": [
+                {"filter": {"selection": "country"}},
+                {"filter": "datum['Perceptions of corruption'] != null"}
+              ],
+              "encoding": {
+                "x": {
+                  "field": "Perceptions of corruption",
+                  "type": "quantitative",
+                  "scale": {"domain": [0, 1]}
+                },
+                "color": {
+                  "field": "Democratic Quality",
+                  "type": "quantitative"
+                },
+                "tooltip": [
+                  {"field": "Perceptions of corruption", "format": ".2f"},
+                  {"field": "year", "timeUnit": "year", "title": "year"}
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {}
+}
