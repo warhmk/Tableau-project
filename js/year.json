@@ -124,7 +124,7 @@
                 "test": "datum['country'] == 'Malaysia' || datum['country'] =='Singapore' || datum['country'] == 'Australia' || datum['country'] == 'New Zealand' || datum['country'] == 'Italy' || datum['country'] == 'India' ||datum['country'] == 'Venezuela' ||datum['country'] == 'Japan' ||datum['country'] == 'South Korea' ||datum['country'] == ''",
                 "value": "black"
               },
-              "value": " "
+              "value": ""
             },
             "opacity": {
               "condition": {"selection": "country_highlight", "value": 1},
@@ -156,7 +156,7 @@
             "text": {"condition": {"selection": "year", "field": "country"}},
             "color": {
               "condition": {"selection": "country", "value": "black"},
-              "value": " "
+              "value": ""
             }
           }
         }
