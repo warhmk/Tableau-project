@@ -7,7 +7,7 @@
   "vconcat": [
     {
       "title": "World happiness ranking 2019",
-      "width": 600,
+      "width": "container",
       "height": 400,
       "layer": [
         {
