@@ -83,7 +83,7 @@
       ]
     },
     {
-      "width": 800,
+      "width": "container",
       "height": 300,
       "title": "Scores for different categories",
       "transform": [
