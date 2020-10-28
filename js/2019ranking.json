@@ -6,7 +6,7 @@
   "background": "#F3EEFC",
   "vconcat": [
     {
-      "width": 800,
+      "width": "container",
       "height": 400,
       "layer": [
         {
