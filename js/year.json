@@ -8,7 +8,7 @@
   "transform": [{"calculate": "year(datum.year)", "as": "Year"}],
   "vconcat": [
     {
-      "width": 800,
+      "width": "container",
       "height": 400,
       "layer": [
         {
@@ -167,7 +167,7 @@
       "hconcat": [
         {
           "width": 300,
-          "height": 170,
+          "height": 180,
           "transform": [
             {"filter": {"selection": "country"}},
             {"filter": "datum['Life Ladder'] != null"},
@@ -185,7 +185,8 @@
                   "field": "year",
                   "type": "temporal",
                   "timeUnit": "year",
-                  "title": "Year"
+                  "title": "Year",
+                  "axis": {"grid": false}
                 },
                 "y": {
                   "field": "Life Ladder",
