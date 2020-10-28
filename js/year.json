@@ -10,6 +10,7 @@
       "title": "Life expectancy and Social support (2006 - 2016)",
       "width": 600,
       "height": 400,
+      "background": "#E4F1F1",
       "layer": [
         {
           "name": "year",
