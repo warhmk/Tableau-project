@@ -3,7 +3,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/warhmk/assignment2/master/data/2019.csv"
   },
-  "background": "#EDF1F5",
+  "background": "#F3EEFC",
   "vconcat": [
     {
       "title": "World happiness ranking 2019",
