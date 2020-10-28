@@ -8,6 +8,7 @@
       "title": "World happiness ranking 2019",
       "width": 600,
       "height": 400,
+      "background": "#E4F1F1",
       "layer": [
         {
           "selection": {
