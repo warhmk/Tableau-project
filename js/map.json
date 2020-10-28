@@ -3,6 +3,7 @@
   "title": "World happiness score 2019",
   "width": "container",
   "height": 400,
+  "background": null,
   "projection": {"type": "equalEarth"},
   "data": {
     "url": "https://raw.githubusercontent.com/warhmk/assignment2/master/js/map.topojson",
