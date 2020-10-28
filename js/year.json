@@ -8,7 +8,7 @@
   "transform": [{"calculate": "year(datum.year)", "as": "Year"}],
   "vconcat": [
     {
-      "width": "container",
+      "width": 800,
       "height": 400,
       "layer": [
         {
@@ -326,7 +326,8 @@
                     "y": {"axis": {"grid": false}},
                     "color": {
                       "field": "Democratic Quality",
-                      "type": "quantitative"
+                      "type": "quantitative",
+                      "legend": {"orient": "top-left"}
                     },
                     "tooltip": [
                       {"field": "Perceptions of corruption", "format": ".2f"},
