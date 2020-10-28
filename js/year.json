@@ -225,7 +225,7 @@
               }
             },
             {
-              "mark": {"type": "text", "dy": -85},
+              "mark": {"type": "text", "dy": -90},
               "encoding": {"text": {"field": "country", "type": "nominal"}}
             }
           ]
