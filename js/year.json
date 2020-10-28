@@ -4,13 +4,13 @@
   "data": {
     "url": "https://raw.githubusercontent.com/warhmk/assignment2/master/data/Original_2017_full4.csv"
   },
+  "background": "#E4F1F1",
   "transform": [{"calculate": "year(datum.year)", "as": "Year"}],
   "vconcat": [
     {
       "title": "Life expectancy and Social support (2006 - 2016)",
       "width": 600,
       "height": 400,
-      "background": "#E4F1F1",
       "layer": [
         {
           "name": "year",
