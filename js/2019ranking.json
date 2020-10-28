@@ -7,7 +7,7 @@
   "vconcat": [
     {
       "title": "World happiness ranking 2019",
-      "width": "container",
+      "width": 800,
       "height": 400,
       "layer": [
         {
@@ -30,23 +30,25 @@
               "field": "GDP per capita",
               "type": "quantitative",
               "title": "GDP",
+              "axis": {"grid": false, "domain": true},
               "scale": {"domain": [0, 1.8]}
             },
             "y": {
               "field": "Score",
               "type": "quantitative",
               "title": "Overall score",
+              "axis": {"grid": false},
               "scale": {"domain": [0, 8]}
             },
             "size": {
               "field": "Perceptions of corruption",
               "type": "quantitative",
-              "legend": {"orient": "none", "legendX": 630, "legendY": 250}
+              "legend": {"orient": "none", "legendX": 650, "legendY": 240}
             },
             "color": {
               "field": "Freedom to make life choices",
               "type": "quantitative",
-              "legend": {"orient": "none", "legendX": 630}
+              "legend": {"orient": "none", "legendX": 600, "legendY": 170}
             },
             "tooltip": [
               {"field": "Country or region"},
@@ -130,7 +132,7 @@
               "condition": {"selection": "country_select", "value": 0.4},
               "value": 0.01
             },
-            "x": {"type": "nominal", "field": "key"},
+            "x": {"type": "nominal", "field": "key", "axis": {"domain": false}},
             "y": {"type": "quantitative", "field": "norm_val", "axis": null},
             "tooltip": [
               {"field": "Country or region"},
