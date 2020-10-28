@@ -212,7 +212,7 @@
     "padding": 0,
     "axisX": {
       "domain": false,
-      "labelAngle": 10,
+      "labelAngle": 0,
       "tickColor": "#ccc",
       "title": null
     },
