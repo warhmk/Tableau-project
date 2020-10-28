@@ -165,7 +165,7 @@
       "hconcat": [
         {
           "width": 300,
-          "height": 165,
+          "height": 170,
           "transform": [
             {"filter": {"selection": "country"}},
             {"filter": "datum['Life Ladder'] != null"},
