@@ -4,7 +4,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/warhmk/assignment2/master/data/Original_2017_full4.csv"
   },
-  "background": "#EDF1F5",
+  "background": "#F3EEFC",
   "transform": [{"calculate": "year(datum.year)", "as": "Year"}],
   "vconcat": [
     {
