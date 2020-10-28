@@ -166,7 +166,7 @@
     {
       "hconcat": [
         {
-          "width": 300,
+          "width": 450,
           "height": 180,
           "transform": [
             {"filter": {"selection": "country"}},
@@ -252,7 +252,7 @@
               ],
               "layer": [
                 {
-                  "width": 300,
+                  "width": 450,
                   "height": 30,
                   "mark": {"type": "tick", "thickness": 3, "height": 30},
                   "transform": [
@@ -310,7 +310,7 @@
               ],
               "layer": [
                 {
-                  "width": 300,
+                  "width": 450,
                   "mark": {"type": "tick", "thickness": 3, "height": 30},
                   "transform": [
                     {"filter": {"selection": "country"}},
