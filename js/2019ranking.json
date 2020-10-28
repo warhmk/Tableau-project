@@ -84,7 +84,7 @@
     {
       "width": 800,
       "height": 300,
-      "title": "scores",
+      "title": "Scores for different categories",
       "transform": [
         {"window": [{"op": "count", "as": "index"}]},
         {
