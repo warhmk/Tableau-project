@@ -144,13 +144,15 @@
             "x": {
               "field": "Social support",
               "type": "quantitative",
-              "scale": {"domain": [0, 1]}
+              "scale": {"domain": [0, 1]},
+              "axis": {"grid": false}
             },
             "y": {
               "field": "Healthy life expectancy at birth",
               "type": "quantitative",
               "title": "Life expectancy",
-              "scale": {"domain": [0, 80]}
+              "scale": {"domain": [0, 80]},
+              "axis": {"grid": false}
             },
             "text": {"condition": {"selection": "year", "field": "country"}},
             "color": {
@@ -205,7 +207,8 @@
                 "y": {
                   "field": "Life Ladder",
                   "type": "quantitative",
-                  "title": "Score (high is good)"
+                  "title": "Score (high is good)",
+                  "axis": {"grid": false}
                 },
                 "tooltip": [
                   {"field": "year", "title": "year", "timeUnit": "year"},
@@ -282,7 +285,8 @@
                       "aggregate": "average",
                       "field": "AverageFreedom",
                       "type": "quantitative",
-                      "title": "Freedom to make life choices"
+                      "title": "Freedom to make life choices",
+                      "axis": {"grid": false}
                     },
                     "tooltip": [{"field": "AverageFreedom", "format": ".2f"}]
                   }
@@ -315,8 +319,10 @@
                     "x": {
                       "field": "Perceptions of corruption",
                       "type": "quantitative",
-                      "scale": {"domain": [0, 1]}
+                      "scale": {"domain": [0, 1]},
+                      "axis": {"grid": false}
                     },
+                    "y": {"axis": {"grid": false}},
                     "color": {
                       "field": "Democratic Quality",
                       "type": "quantitative"
@@ -335,6 +341,9 @@
                       "field": "AverageCorr",
                       "type": "quantitative",
                       "title": "Perceptions of corruption"
+                    },
+                    "y": {
+                      "axis": {"grid": false}
                     },
                     "tooltip": [{"field": "AverageCorr", "format": ".2f"}]
                   }
