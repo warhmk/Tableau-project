@@ -8,7 +8,7 @@
   "transform": [{"calculate": "year(datum.year)", "as": "Year"}],
   "vconcat": [
     {
-      "width": 900,
+      "width": 930,
       "height": 400,
       "layer": [
         {
