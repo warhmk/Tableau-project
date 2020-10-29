@@ -8,7 +8,7 @@
   "transform": [{"calculate": "year(datum.year)", "as": "Year"}],
   "vconcat": [
     {
-      "width": "container",
+      "width": 750,
       "height": 400,
       "layer": [
         {
@@ -166,7 +166,7 @@
     {
       "hconcat": [
         {
-          "width": 300,
+          "width": 370,
           "height": 180,
           "transform": [
             {"filter": {"selection": "country"}},
@@ -252,7 +252,7 @@
               ],
               "layer": [
                 {
-                  "width": 300,
+                  "width": 370,
                   "height": 30,
                   "mark": {"type": "tick", "thickness": 3, "height": 30},
                   "transform": [
