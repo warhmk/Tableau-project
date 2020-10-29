@@ -6,7 +6,7 @@
   "background": "#F3EEFC",
   "vconcat": [
     {
-      "width": 500,
+      "width": 750,
       "height": 400,
       "layer": [
         {
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "width": 500,
+      "width": 750,
       "height": 300,
       "title": "Scores for different categories",
       "transform": [
