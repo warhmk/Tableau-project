@@ -42,12 +42,12 @@
             "size": {
               "field": "Perceptions of corruption",
               "type": "quantitative",
-              "legend": {"orient": "none", "legendX": 650, "legendY": 240}
+              "legend": {"orient": "none", "legendX": 700, "legendY": 240}
             },
             "color": {
               "field": "Freedom to make life choices",
               "type": "quantitative",
-              "legend": {"orient": "none", "legendX": 600, "legendY": 170}
+              "legend": {"orient": "none", "legendX": 650, "legendY": 170}
             },
             "tooltip": [
               {"field": "Country or region"},
