@@ -2,6 +2,8 @@
 
 This project visualizes the World Happiness data using Vega-Lite, showcasing various aspects of happiness scores across different countries over multiple years. The project includes interactive visualizations that allow users to explore the data in an engaging way.
 
+Link to the webpage: https://warmhmk.github.io/Vega-Lite-project
+
 ### Files and Directories
 
 - **`index.html`**: The main HTML file that contains the structure of the web page and includes the necessary scripts and stylesheets for the visualizations.
@@ -48,6 +50,4 @@ The project includes three main visualizations:
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-Link to the webpage: https://warmhmk.github.io/Vega-Lite-project
 
